@@ -1,34 +1,114 @@
 /**
- * UseCase1HotelBookingApp
- *
- * This class represents the entry point of the Hotel Booking Application.
- * It demonstrates how a Java program starts execution and prints
- * a welcome message to the console.
- *
+ * Book My Stay App
+ * Use Case 2: Basic Room Types & Static Availability
  * @author Rachana
- * @version 1.0
+ * @version 2.0
  */
-class UseCase1HotelBookingApp {
 
-    /**
-     * Main method - Entry point of the application
-     * JVM starts execution from here
-     *
-     * @param args Command line arguments
-     */
+abstract class Room {
+
+    private String roomType;
+    private int numberOfBeds;
+    private double price;
+
+    public Room(String roomType, int numberOfBeds, double price) {
+        this.roomType = roomType;
+        this.numberOfBeds = numberOfBeds;
+        this.price = price;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public int getNumberOfBeds() {
+        return numberOfBeds;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public abstract void displayDetails();
+}
+
+class SingleRoom extends Room {
+
+    public SingleRoom() {
+        super("Single Room", 1, 2000.0);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Room Type : " + getRoomType());
+        System.out.println("Beds      : " + getNumberOfBeds());
+        System.out.println("Price     : ₹" + getPrice());
+    }
+}
+
+class DoubleRoom extends Room {
+
+    public DoubleRoom() {
+        super("Double Room", 2, 3500.0);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Room Type : " + getRoomType());
+        System.out.println("Beds      : " + getNumberOfBeds());
+        System.out.println("Price     : ₹" + getPrice());
+    }
+}
+
+class SuiteRoom extends Room {
+
+    public SuiteRoom() {
+        super("Suite Room", 3, 6000.0);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Room Type : " + getRoomType());
+        System.out.println("Beds      : " + getNumberOfBeds());
+        System.out.println("Price     : ₹" + getPrice());
+    }
+}
+
+class UseCase2RoomInitialization {
+
     public static void main(String[] args) {
 
-        // Printing welcome message
-        System.out.println("=====================================");
-        System.out.println("   Welcome to Book My Stay System    ");
-        System.out.println("=====================================");
+        System.out.println("==========================================");
+        System.out.println("        BOOK MY STAY APPLICATION          ");
+        System.out.println("==========================================");
+        System.out.println("Version : v2.0");
+        System.out.println("------------------------------------------");
 
-        // Application details
-        System.out.println("Application Name : Hotel Booking System");
-        System.out.println("Version          : v1.0");
+        Room single = new SingleRoom();
+        Room doubleroom = new DoubleRoom();
+        Room suite = new SuiteRoom();
 
-        System.out.println("=====================================");
-        System.out.println("Application started successfully!");
-        System.out.println("=====================================");
+        int singleAvailable = 5;
+        int doubleAvailable = 3;
+        int suiteAvailable = 2;
+
+        System.out.println("Single Room Details:");
+        single.displayDetails();
+        System.out.println("Available Rooms: " + singleAvailable);
+
+        System.out.println("------------------------------------------");
+
+        System.out.println("Double Room Details:");
+        doubleroom.displayDetails();
+        System.out.println("Available Rooms: " + doubleAvailable);
+
+        System.out.println("------------------------------------------");
+
+        System.out.println("Suite Room Details:");
+        suite.displayDetails();
+        System.out.println("Available Rooms: " + suiteAvailable);
+
+        System.out.println("==========================================");
+        System.out.println("Application execution completed.");
     }
 }
