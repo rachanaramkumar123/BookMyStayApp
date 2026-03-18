@@ -8,7 +8,7 @@
  * @author Rachana
  * @version 1.0
  */
-public class UseCase1HotelBookingApp {
+class UseCase1HotelBookingApp {
 
     /**
      * Main method - Entry point of the application
